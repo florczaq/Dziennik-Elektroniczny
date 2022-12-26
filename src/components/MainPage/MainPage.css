@@ -1,0 +1,80 @@
+.mainpage-container {
+	width: 85vw;
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mainpage-container .buttonbox-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	height: 80%;
+	width: 80%;
+}
+
+.mainpage-container .buttonbox {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+
+	background-color: orange;
+	color: #fff;
+	width: 15vw;
+	height: 15vw;
+	margin: 0 2vw;
+	padding-top: 2vh;
+	filter: saturate(2);
+
+	box-shadow: 6px 8px 15px #000;
+}
+
+.mainpage-container .buttonbox img{
+	width: 9vw;
+}
+
+.mainpage-container .buttonbox:hover {
+	cursor: pointer;
+	transform: translateY(-10px);
+}
+
+.mainpage-container .buttonbox:nth-child(1) {
+	background-color: #db6b2a;
+}
+.mainpage-container .buttonbox:nth-child(2) {
+	background-color: #54E248;
+}
+.mainpage-container .buttonbox:nth-child(3) {
+	background-color: #23A1BC;
+}
+.mainpage-container .buttonbox:nth-child(4) {
+	background-color: #D14D4D;
+}
+.mainpage-container .buttonbox:nth-child(5) {
+	background-color: #1D6F93;
+}
+.mainpage-container .buttonbox:nth-child(6) {
+	background-color: #553687;
+}
+
+
+.mainpage-container .buttonbox:nth-child(1):hover {
+	background-color: #fbab7d;
+}
+.mainpage-container .buttonbox:nth-child(2):hover {
+	background-color: #88fb7e;
+}
+.mainpage-container .buttonbox:nth-child(3):hover {
+	background-color: #64e0fc;
+}
+.mainpage-container .buttonbox:nth-child(4):hover {
+	background-color: #fe6d6d;
+}
+.mainpage-container .buttonbox:nth-child(5):hover {
+	background-color: #6ad1fd;
+}
+.mainpage-container .buttonbox:nth-child(6):hover {
+	background-color: #a472f5;
+}

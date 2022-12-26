@@ -1,0 +1,41 @@
+.timetable-container {
+	width: 85vw;
+	height: 90vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.timetable-container table {
+	width: 70vw;
+	height: 80vh;
+	border-spacing: 1vw;
+	color: #fff;
+}
+
+.timetable-container table td {
+	text-align: center;
+	height: 6vh;
+	width: 2vw;
+	font-size: 1.1rem;
+	background-color: rgba(83, 91, 112, 0.42);
+	box-shadow: 1px 1px 4px #000;
+	text-shadow: 1px 1px 2px #000;
+}
+
+.timetable-container table td p:nth-child(1) {
+	font-size: 1.5rem;
+}
+
+.timetable-container table td p:nth-child(2) {
+	font-size: 0.65rem;
+}
+
+.timetable-container table thead td {
+	background-color: #242e47;
+}
+
+.timetable-container tr td:nth-child(1) {
+	background-color: #242e47;
+}
