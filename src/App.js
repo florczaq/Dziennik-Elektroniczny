@@ -7,6 +7,7 @@ import Grades from './components/Grades';
 import Comments from './components/Comments';
 import StudentInfo from './components/StudentInfo';
 import Timetable from './components/Timetable';
+import NewMessage from './components/NewMessage';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         {/* <Grades/> */}
         {/* <Comments /> */}
         {/* <StudentInfo/> */}
-        <Timetable />
+        {/* <Timetable /> */}
+        {/* <NewMessage/> */}
       </div>
     </div>
   );

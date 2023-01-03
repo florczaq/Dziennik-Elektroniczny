@@ -1,4 +1,3 @@
-import { getByDisplayValue } from "@testing-library/react";
 import React from "react";
 import "./StudentInfo/StudentInfo.css";
 import profilePicture from "../assets/Images/profile.svg";
@@ -14,7 +13,7 @@ const data = {
 const StudentInfo = () => {
   return <div className="studentinfo-container">
     <div className="main-info">
-      <div className="student-picture"><img src={profilePicture} alt="profile picture" /></div>
+      <div className="student-picture"><img src={profilePicture} alt="profile" /></div>
       <div className="student-info">
         <div>
           <p>Imię: </p>

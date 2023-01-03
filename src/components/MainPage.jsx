@@ -10,7 +10,7 @@ import wiadomosci from "../assets/Images/MainPage/wiadomosci.svg";
 
 const ButtonBox = ({text = "", iconName}) =>{
   return <div className="buttonbox">
-    <img src={iconName} alt="Button image" />
+    <img src={iconName} alt="Button" />
     <p>{text}</p>
   </div>
 }
