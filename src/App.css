@@ -17,7 +17,7 @@
 }
 
 .content{
-	display: flex;
-	flex-direction: row;
+	/* display: flex;/ */
+	/* flex-direction: col; */
 	width: 100vw;
 }

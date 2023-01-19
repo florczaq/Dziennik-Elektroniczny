@@ -5,6 +5,7 @@
 	align-items: center;
 	flex-direction: column;
 	overflow-y: scroll;
+	float: left;
 }
 
 .grades-container .subject-title {

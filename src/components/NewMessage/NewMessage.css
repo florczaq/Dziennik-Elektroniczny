@@ -3,6 +3,7 @@
 	height: 90vh;
 	display: flex;
 	align-items: center;
+	float: left;
 	flex-direction: column;
 }
 
@@ -14,7 +15,7 @@
 	width: 60vw;
 	color: #fff;
 	background-color: #242e47;
-	margin-top: 8vh;
+	margin: 8vh 0 4vh 0;
 	font-size: 1.5rem;
 }
 
@@ -30,6 +31,7 @@
 .address-info div {
 	display: flex;
 	width: 50%;
+	margin: 4vh;
 }
 
 .address-info p {
@@ -68,10 +70,9 @@
 	text-shadow: 1px 1px 2px #000;
 	letter-spacing: 2px;
 	padding: 0.5vw;
+	margin-top: 5vh;
 }
 
-.newmessage-container textarea:active {
-}
 
 .newmessage-container .button-container{
 	display: flex;
@@ -79,6 +80,7 @@
 	align-items: center;
 	height: 10vh;
 	width: 60vw;
+	margin: 3vh;
 }
 
 .newmessage-container button{

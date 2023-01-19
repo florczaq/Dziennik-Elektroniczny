@@ -5,6 +5,7 @@
 	align-items: center;
 	flex-direction: column;
 	padding-top: 2vh;
+	float: left;
 }
 
 .comments-container .title {
