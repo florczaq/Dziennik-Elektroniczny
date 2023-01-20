@@ -1,0 +1,23 @@
+@font-face {
+	font-family: Alatsi;
+	src: url("./assets/Font/Alatsi-Regular.ttf");
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: Alatsi;
+}
+
+.App{
+	background-color: #BBD2E8;
+	display: flex;
+	flex-direction: column;
+}
+
+.content{
+	/* display: flex;/ */
+	/* flex-direction: col; */
+	width: 100vw;
+}
