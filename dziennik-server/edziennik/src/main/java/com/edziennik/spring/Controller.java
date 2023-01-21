@@ -2,10 +2,7 @@ package com.edziennik.spring;
 
 
 import com.edziennik.spring.database_objects.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -49,9 +46,19 @@ public class Controller {
 	@GetMapping("/student/{id}/messages")
 	public ArrayList<Message> getStudentMessages (@PathVariable String id){
 		ArrayList<Message> al = new ArrayList<>();
-		al.add(new Message("Tytul wiadomosci 1","abcabc00","2020-01-01","Ta wiadomość jest przeczytana",true));
-		al.add(new Message("Tytul wiadomosci 2","bcabca00","2020-01-01","Ta wiadomość jest nieprzeczytana",false));
+		al.add(new Message(1,"Tytul wiadomosci 1","abcabc00", "mikflo00","2020-01-01","Ta wiadomość jest przeczytana",true));
+		al.add(new Message(2,"Tytul wiadomosci 2","bcabca00",  "mikflo00","2020-01-01","Ta wiadomość jest nieprzeczytana",false));
 		return al;
+	}
+
+	@PostMapping("/newMessage")
+	public void sendNewMessage(@RequestBody Message message){
+		System.out.println(message.toString());
+	}
+
+	@PutMapping("/messages/read")
+	public void changeMessageState(@RequestParam(required = true) String id){
+		System.out.printf("Message %s has been read.%n", id);
 	}
 
 }

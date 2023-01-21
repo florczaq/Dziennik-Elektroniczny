@@ -1,28 +1,9 @@
-import React from 'react'
-import "./Messages/Messages.css";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const data = [
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "1", title: "nieodczytana", date: new Date(), read: false, content: "" },
-  { from: "2", title: "odczytana", date: new Date(), read: true, content: "" },
-  { from: "3", title: "ta nie jest", date: new Date(), read: false, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-  { from: "4", title: "ta jest", date: new Date(), read: true, content: "" },
-]
+import { getStudentMessages, changeMessageState } from '../connection/Connection';
+
+import "./Messages/Messages.css";
 
 const TitleBar = ({ title }) => {
   return (
@@ -32,36 +13,44 @@ const TitleBar = ({ title }) => {
   )
 }
 
-const Message = ({ from = "", title = "", date = new Date(), content }) => {
+const Message = ({ from = "", title = "", date, content, onClick }) => {
   return (
-    <div className='message'>
+    <div className='message' onClick={onClick}>
       <p>Od: {from}</p>
       <p>Tytuł: {title}</p>
-      <p>Data: {date.toLocaleDateString()}</p>
+      <p>Data: {date}</p>
     </div>
   )
 }
 
+const renderMessages = (read = false, data = [], navigate) => data
+  .filter(e => { return e.read === read })
+  .map((e, i) => {
+    return <Message key={i} {...e} onClick={() => {
+      navigate("/messages/read", { state: { ...e } });
+      changeMessageState(e.id).catch(err => console.error(err));
+    }} />
+  })
+
+
 export default function Messages() {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getStudentMessages(1)
+      .then(res => setData(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div className='messages-container'>
+
       <TitleBar title={"Nieodczytane"} />
-      <div className='unreadmessages-container mc'>
-        {
-          data
-            .filter(e => { return !e.read })
-            .map((e, i) => { return <Message key={i} {...e} /> })
-        }
-      </div>
+      <div className='unreadmessages-container mc'>{renderMessages(false, data, navigate)}</div>
 
       <TitleBar title={"Odczytane"} />
-      <div className='readmessages-container mc'>
-        {
-          data
-            .filter(e => { return e.read })
-            .map((e, i) => { return <Message key={i} {...e} /> })
-        }
-      </div>
+      <div className='readmessages-container mc'>{renderMessages(true, data, navigate)}</div>
 
     </div>
   )

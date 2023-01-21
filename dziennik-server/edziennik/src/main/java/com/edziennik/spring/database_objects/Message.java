@@ -1,21 +1,34 @@
 package com.edziennik.spring.database_objects;
 
 public class Message {
+	int id;
 	String title;
 	String from;
+	String to;
 	String date;
 	String content;
-	Boolean read;
+	Boolean read = false;
 
 	public Message() {
 	}
 
-	public Message(String title, String from, String date, String content, Boolean read) {
+	public Message(int id, String title, String from, String to, String date, String content, Boolean read) {
+		this.id = id;
 		this.title = title;
 		this.from = from;
+		this.to = to;
 		this.date = date;
 		this.content = content;
 		this.read = read;
+
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
 	}
 
 	public String getTitle() {
@@ -56,5 +69,26 @@ public class Message {
 
 	public void setRead(Boolean read) {
 		this.read = read;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Message{" +
+			"id=" + id +
+			", title='" + title + '\'' +
+			", from='" + from + '\'' +
+			", to='" + to + '\'' +
+			", date='" + date + '\'' +
+			", content='" + content + '\'' +
+			", read=" + read +
+			'}';
 	}
 }

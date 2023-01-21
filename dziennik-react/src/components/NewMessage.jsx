@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./NewMessage/NewMessage.css"
+import { sendNewMessage } from '../connection/Connection';
 
 export default function NewMessage() {
   const [recipient, setRecipient] = useState("");
@@ -7,7 +8,9 @@ export default function NewMessage() {
   const [text, setText] = useState("");
 
   const onSubmit = () => {
-    console.table(recipient, title, text);
+    sendNewMessage({ title: title, from: "mikflo00", to: recipient, date: "2020-01-01", content: text })
+      .then(() => console.log("Message sent :D"))
+      .catch(() => console.warn("Smth went wrong :("));
   }
 
   return (
