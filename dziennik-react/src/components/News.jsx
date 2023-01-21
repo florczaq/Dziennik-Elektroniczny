@@ -1,27 +1,29 @@
 import React from 'react'
 import "./News/News.css";
 
-const data = [
-  { title: "Aktualność 1", date: new Date(), content: "123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123" },
-  { title: "Aktualność 3", date: new Date(), content: "456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456456" },
-  { title: "Aktualność 2", date: new Date(), content: "789789789789789789789789789789789789789789789789789789789789789789789789789789789789789789789" },
-  { title: "Aktualność 4", date: new Date(), content: "1357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357135713571357" },
-  { title: "Aktualność 4", date: new Date(), content: "2468246824682468246824682468246824682468246824682468246824682468246824682468246824682468246824682468" },
-  { title: "Aktualność 6", date: new Date(), content: "2468246824682468246824682468246824682468246824682468246824682468246824682468246824682468246824682468" },
-  { title: "Aktualność 7", date: new Date(), content: "2468246824682468246824682468246824682468246824682468246824682468246824682468246824682468246824682468" },
-]
+import { getSchoolNews } from '../connection/Connection';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-const SingleNews = ({ title = "", date = new Date(), content = "" }) => {
+const SingleNews = ({ title = "", date = "", content = "" }) => {
   return <div className='single-news'>
     <div className='main-info'>
       <p>{title}</p>
-      <p>Data: {date.toLocaleDateString()}</p>
+      <p>Data: {date}</p>
     </div>
     <p className='content-p'>{content}</p>
   </div>
 }
 
 export default function News() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getSchoolNews()
+      .then(res => setData(res.data))
+      .catch(err=>console.error(`Smth went wrong. ${err}`));
+  }, []);
+
   return (
     <div className='news-container'>
       <div className='news'>

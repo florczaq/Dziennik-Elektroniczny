@@ -13,12 +13,10 @@ export default function MessageReader() {
           <p> Od: </p><input className='recipient-input' type="text" value={state.from} disabled />
         </div>
         <div>
-          <p> Tytuł: </p><input className='title-input' type="text" value={state.title} disabled />
+          <p> Data: </p><input className='title-input' type="text" value={state.date} disabled />
         </div>
       </div>
-      <textarea name="" id="" value={state.content} disabled style={{ height: '60vh' }} />
-      <div className='button-container'>
-      </div>
+      <textarea name="" id="" value={state.content} disabled style={{ height: '45vh' }} />
     </div>
   )
 }

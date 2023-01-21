@@ -6,6 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+
+/**
+ * TODO
+ * Uwagi
+ * Plan lekcji
+ */
+
+
 @RestController
 @CrossOrigin
 public class Controller {
@@ -18,6 +26,8 @@ public class Controller {
 		al.add(new Grade("4", "2020-01-01", "J. Angielski"));
 		al.add(new Grade("3", "2020-01-01", "Informatyka"));
 		al.add(new Grade("2", "2020-01-01", "Matematyka"));
+		al.add(new Grade("6", "2020-01-01", "HIS"));
+		al.add(new Grade("6", "2020-01-01", "HIS"));
 		return al;
 	}
 
@@ -37,27 +47,28 @@ public class Controller {
 	@GetMapping("/school/news")
 	public ArrayList<News> getNews() {
 		ArrayList<News> al = new ArrayList<>();
-		al.add(new News("Tytul 1", "2020-01-01", "123 123 123 123 123 123 123 "));
-		al.add(new News("Tytul 2", "2020-01-01", "456 123 123 123 123 123 123 "));
-		al.add(new News("Tytul 3", "2020-01-01", "789 123 123 123 123 123 123 "));
+		for (int i = 1; i <= 30; i++)
+			al.add(new News(String.format("Tytuł %s", i), "2020-01-01", "123 123 123 123 123 123 123 "));
 		return al;
 	}
 
 	@GetMapping("/student/{id}/messages")
-	public ArrayList<Message> getStudentMessages (@PathVariable String id){
+	public ArrayList<Message> getStudentMessages(@PathVariable String id) {
 		ArrayList<Message> al = new ArrayList<>();
-		al.add(new Message(1,"Tytul wiadomosci 1","abcabc00", "mikflo00","2020-01-01","Ta wiadomość jest przeczytana",true));
-		al.add(new Message(2,"Tytul wiadomosci 2","bcabca00",  "mikflo00","2020-01-01","Ta wiadomość jest nieprzeczytana",false));
+		for (int i = 1; i <= 30; i++)
+			al.add(new Message(i, String.format("Tytuł wiadomości %S", i), "abcabc00", "mikflo00", "2020-01-01", "Ta wiadomość jest przeczytana", true));
+		for (int i = 31; i <= 60; i++)
+			al.add(new Message(i, String.format("Tytuł wiadomości %S", i), "bcabca00", "mikflo00", "2020-01-01", "Ta wiadomość jest nieprzeczytana", false));
 		return al;
 	}
 
 	@PostMapping("/newMessage")
-	public void sendNewMessage(@RequestBody Message message){
+	public void sendNewMessage(@RequestBody Message message) {
 		System.out.println(message.toString());
 	}
 
 	@PutMapping("/messages/read")
-	public void changeMessageState(@RequestParam(required = true) String id){
+	public void changeMessageState(@RequestParam(required = true) String id) {
 		System.out.printf("Message %s has been read.%n", id);
 	}
 
