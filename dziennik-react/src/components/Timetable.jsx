@@ -1,13 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import { getStudentTimetable } from '../connection/Connection'
 import "./Timetable/Timetable.css"
-
-const days = [
-  { name: "Poniedziałek", subjects: ["Matematyka", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu",] },
-  { name: "Wtorek", subjects: ["Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu",] },
-  { name: "Środa", subjects: ["Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu",] },
-  { name: "Czwartek", subjects: ["Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu",] },
-  { name: "Piątek", subjects: ["Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu", "Nazwa Przedmiotu",] },
-]
 
 const hours = [
   { number: "1", time: "7.10-7.55" },
@@ -22,6 +16,17 @@ const hours = [
 ]
 
 const Timetable = () => {
+  const [days, setDays] = useState([]);
+
+  useEffect(() => {
+    getStudentTimetable("4ig")
+      .then(
+        res => setDays(res.data)
+        // res => console.log(res.data)
+      )
+      .catch();
+  }, []);
+
   return (
     <div className='timetable-container'>
       <table>
@@ -49,7 +54,11 @@ const Timetable = () => {
                   {
                     days.map(
                       (day, j) => {
-                        return <td key={j}>{day.subjects[i]}</td>
+                        let val = ""
+                        try {
+                          val = day.subjects[i].name;
+                        } catch (e) { }
+                        return <td key={j}>{val}</td>
                       }
                     )
                   }

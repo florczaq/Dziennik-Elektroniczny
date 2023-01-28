@@ -25,3 +25,7 @@ export const getSchoolNews = () => {
 export const getStudentGrades = (id) =>{
   return axios.get(`${localhost}/student/${id}/grades`);
 }
+
+export const getStudentTimetable = (classCode) =>{
+  return axios.get(`${localhost}/student/timetable?classCode=4ig`);
+}

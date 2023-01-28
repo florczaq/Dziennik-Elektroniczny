@@ -4,35 +4,10 @@ import { getStudentGrades } from "../connection/Connection";
 
 import "./Grades/Grades.css"
 
-// const subjects = [
-//   {
-//     name: "Matematyka", grades: [
-//       { grade: "5", date: new Date().getFullYear() },
-//       { grade: "4", date: new Date().getFullYear() },
-//       { grade: "3", date: new Date().getFullYear() },
-//       { grade: "2", date: new Date().getFullYear() },
-//       { grade: "1", date: new Date().getFullYear() },
-//       { grade: "6", date: new Date().getFullYear() },
-//       { grade: "5", date: new Date().getFullYear() },
-//     ]
-//   },
-//   {
-//     name: "Informatyka", grades: [
-//       { grade: "6", date: new Date().getFullYear() },
-//       { grade: "5", date: new Date().getFullYear() },
-//     ]
-//   },
-//   {
-//     name: "Język Polski", grades: [
-//       { grade: "1", date: new Date().getFullYear() },
-//     ]
-//   },
-//   {
-//     name: "Język Angielski", grades: [
-//       { grade: "1", date: new Date().getFullYear() },
-//     ]
-//   },
-// ]
+/**
+ * Modal - https://codepen.io/claydiffrient/pen/KNxgav
+ * 
+ */
 
 const GradeBox = ({ grade, date = new Date() }) => {
   return <div className={`grade-${grade} gradeBox `}>

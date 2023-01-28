@@ -3,6 +3,7 @@ package com.edziennik.spring;
 
 import com.edziennik.spring.database_objects.*;
 import org.springframework.web.bind.annotation.*;
+import com.edziennik.spring.enums.DniTygodnia;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,26 @@ public class Controller {
 	@PutMapping("/messages/read")
 	public void changeMessageState(@RequestParam(required = true) String id) {
 		System.out.printf("Message %s has been read.%n", id);
+	}
+
+	@GetMapping("/student/timetable")
+	public ArrayList<Day> getStudentTimetable(@RequestParam(required = true) String classCode){
+
+		ArrayList<Day> timetable = new ArrayList<>();
+		ArrayList<Subject> subjects = new ArrayList<>();
+		subjects.add(new Subject("HIS", 1));
+		subjects.add(new Subject("Matematyka", 2));
+		subjects.add(new Subject("Polski", 3));
+		subjects.add(new Subject("Angielski", 4));
+
+		timetable.add(new Day(DniTygodnia.Pon.label, subjects));
+		timetable.add(new Day(DniTygodnia.Wt.label, subjects));
+		timetable.add(new Day(DniTygodnia.Sr.label, subjects));
+		timetable.add(new Day(DniTygodnia.Czw.label, subjects));
+		timetable.add(new Day(DniTygodnia.Pi.label, subjects));
+
+
+		return timetable;
 	}
 
 }
