@@ -22,10 +22,14 @@ export const getSchoolNews = () => {
   return axios.get(`${localhost}/school/news`);
 }
 
-export const getStudentGrades = (id) =>{
+export const getStudentGrades = (id) => {
   return axios.get(`${localhost}/student/${id}/grades`);
 }
 
-export const getStudentTimetable = (classCode) =>{
+export const getStudentTimetable = (classCode) => {
   return axios.get(`${localhost}/student/timetable?classCode=4ig`);
+}
+
+export const loginStudent = (studentCode, password) => {
+  return axios.get(`${localhost}/login?s=${studentCode}&p=${password}`)
 }

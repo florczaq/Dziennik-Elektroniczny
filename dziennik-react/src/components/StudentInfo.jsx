@@ -19,11 +19,13 @@ const StudentInfo = () => {
           <p>Imię: </p>
           <p>Nazwisko: </p>
           <p>Adres: </p>
+          <p>Klasa: </p>
         </div>
         <div>
           <p>{data.firstName}</p>
           <p>{data.lastName}</p>
           <p>{data.address}</p>
+          <p>{data.classCode}</p>
         </div>
       </div>
     </div>

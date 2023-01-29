@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -13,12 +13,14 @@ import NewMessage from './components/NewMessage';
 import Messages from './components/Messages';
 import MessageReader from './components/MessageReader';
 import News from './components/News';
+import LoginPage from './components/LoginPage';
+import * as Session from './connection/Session';
 
 const Element = ({ Component }) => {
   return <div className='content'>
     <Header />
     {Component !== MainPage && <Sidebar />}
-    <Component />
+    {Session.isUserLoggedIn ? <Component/> : <LoginPage/>}
   </div>
 }
 

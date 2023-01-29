@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.edziennik.spring.enums.DniTygodnia;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -42,7 +43,7 @@ public class Controller {
 
 	@GetMapping("/student/{id}/info")
 	public Student getStudentInfo(@PathVariable String id) {
-		return new Student("Mikołaj", "Florczak", "Adres 123", "000000000", "email@example.com");
+		return new Student("Mikołaj", "Florczak", "Adres 123", "000000000", "email@example.com", "4ig", "mikflo00");
 	}
 
 	@GetMapping("/school/news")
@@ -74,7 +75,7 @@ public class Controller {
 	}
 
 	@GetMapping("/student/timetable")
-	public ArrayList<Day> getStudentTimetable(@RequestParam(required = true) String classCode){
+	public ArrayList<Day> getStudentTimetable(@RequestParam(required = true) String classCode) {
 
 		ArrayList<Day> timetable = new ArrayList<>();
 		ArrayList<Subject> subjects = new ArrayList<>();
@@ -93,4 +94,10 @@ public class Controller {
 		return timetable;
 	}
 
+	@GetMapping("/login")
+	public Student validateLoginData(@RequestParam(name = "s", required = true) String studentCode, @RequestParam(name = "p", required = true) String password) {
+		if (studentCode.equals("admin") && password.equals("admin"))
+			return new Student("Mikołaj", "Florczak", "Adres 123", "000000000", "a@b.c", "4ig", "mikflo00");
+		return null;
+	}
 }

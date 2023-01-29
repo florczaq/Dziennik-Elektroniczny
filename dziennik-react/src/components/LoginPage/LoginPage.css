@@ -1,0 +1,91 @@
+.login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 90vh;
+}
+
+.login-prompt {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #242e47;
+	color: #fff;
+
+	width: 60vw;
+	height: 30vh;
+
+  border-radius: 20px;
+}
+
+.login-data {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #242e47;
+
+	width: 50vw;
+	height: 30vh;
+	margin: 4vw;
+	flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.login-submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.login-data input {
+	border: 2px solid #000;
+	border-radius: 20px;
+	padding: 0.5vw;
+	margin: 0 2vw;
+  width: 15vw;
+  height: 7vh;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.login-data button {
+	background-color: green;
+	width: 15vw;
+	height: 7vh;
+	border-radius: 20px;
+	color: #fff;
+	cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.login-data button:hover {
+	background-color: darkgreen;
+}
+
+p#wrong-data-alert{
+	text-align: center;
+	width: 67%;
+	visibility: hidden;
+}
+
+p#wrong-data-alert.not-empty{
+	visibility: visible;
+	background-color: red;
+	color: #fff;
+	font-size: 1.3rem;
+	padding: 1vh 2vw;
+	border-radius: 20px;
+	border: 2px solid #000;
+}
+
+.modal-container{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2vw;
+}
