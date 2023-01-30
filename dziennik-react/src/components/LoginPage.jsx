@@ -1,11 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
 import { loginStudent } from '../connection/Connection';
 import { studentLogin } from '../connection/Session';
-import "./LoginPage/LoginPage.css"
-import { useEffect } from 'react';
+import "./LoginPage/LoginPage.css";
 
 /**
  * TODO
@@ -18,10 +15,8 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
 
-  const navigate = useNavigate();
-
   const validate = () => {
-    if (studentCode != "" && password != "")
+    if (studentCode !== "" && password !== "")
       return true;
 
     const wrongDataMessage = document.getElementById('wrong-data-alert');
@@ -37,13 +32,13 @@ const LoginPage = () => {
       loginStudent(studentCode, password)
         .then(res => {
           setLoader(false)
-          if (res.data == "") {
+          if (res.data === "") {
             const wrongDataMessage = document.getElementById('wrong-data-alert');
             wrongDataMessage.classList.add("not-empty")
             wrongDataMessage.innerHTML = "Złe dane logowania";
             return;
           }
-          studentLogin(res.data.studentCode);
+          studentLogin(res.data);
           window.location.reload();
         })
         .catch(err => console.error(err));
@@ -57,7 +52,7 @@ const LoginPage = () => {
   }
 
   const handleChanges = (event) => {
-    event.target.id == "studentCode"
+    event.target.id === "studentCode"
       ? setStudentCode(event.target.value)
       : setPassword(event.target.value);
 
@@ -77,6 +72,9 @@ const LoginPage = () => {
       transform: 'translate(-50%, -50%)',
       borderRadius: "50px"
     },
+    overlay:{
+      backgroundColor: 'transparent'
+    }
   };
 
   useEffect(() => ReactModal.setAppElement(".login-container"), [])

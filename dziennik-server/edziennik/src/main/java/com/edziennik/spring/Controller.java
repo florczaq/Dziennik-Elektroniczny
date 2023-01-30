@@ -8,14 +8,6 @@ import com.edziennik.spring.enums.DniTygodnia;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
-/**
- * TODO
- * Uwagi
- * Plan lekcji
- */
-
-
 @RestController
 @CrossOrigin
 public class Controller {

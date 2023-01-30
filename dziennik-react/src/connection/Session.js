@@ -1,7 +1,7 @@
 const KEYS = {
-  USER_ID: "UID"
+  USER: "UD"
 }
 
-export const isUserLoggedIn = Boolean(sessionStorage.getItem(KEYS.USER_ID));
+export const isUserLoggedIn = Boolean(sessionStorage.getItem(KEYS.USER));
 
-export const studentLogin = (studentCode) => sessionStorage.setItem(KEYS.USER_ID, studentCode);
+export const studentLogin = (student) => sessionStorage.setItem(KEYS.USER, JSON.stringify(student));

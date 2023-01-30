@@ -1,19 +1,19 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
-import MainPage from './components/MainPage';
-import Grades from './components/Grades';
 import Comments from './components/Comments';
+import Grades from './components/Grades';
+import LoginPage from './components/LoginPage';
+import MainPage from './components/MainPage';
+import MessageReader from './components/MessageReader';
+import Messages from './components/Messages';
+import NewMessage from './components/NewMessage';
+import News from './components/News';
 import StudentInfo from './components/StudentInfo';
 import Timetable from './components/Timetable';
-import NewMessage from './components/NewMessage';
-import Messages from './components/Messages';
-import MessageReader from './components/MessageReader';
-import News from './components/News';
-import LoginPage from './components/LoginPage';
 import * as Session from './connection/Session';
 
 const Element = ({ Component }) => {

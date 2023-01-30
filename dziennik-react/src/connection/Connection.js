@@ -33,3 +33,7 @@ export const getStudentTimetable = (classCode) => {
 export const loginStudent = (studentCode, password) => {
   return axios.get(`${localhost}/login?s=${studentCode}&p=${password}`)
 }
+
+export const getStudentComments = (id) => {
+  return axios.get(`${localhost}/student/${id}/comments`);
+}

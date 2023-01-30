@@ -2,13 +2,13 @@ package com.edziennik.spring.database_objects;
 
 public class Comment {
 	String title;
-	String content;
+	String description;
 	String date;
 	Boolean positive;
 
 	public Comment(String title, String content, String date, Boolean positive) {
 		this.title = title;
-		this.content = content;
+		this.description = content;
 		this.date = date;
 		this.positive = positive;
 	}
@@ -24,12 +24,12 @@ public class Comment {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getDate() {
