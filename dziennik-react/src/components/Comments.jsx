@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import { getStudentComments } from "../connection/Connection";
+import { getLoggedStudentInfo } from "../connection/Session";
 import "./Comments/Comments.css";
 
-// const comments = [
-//   { title: "Ta  uwaga jest pozytywna", date: "01.01.2020", positive: true, description: 'CSS word-wrap property is used to break the long words and wrap onto the next line. This property is used to prevent overflow when an unbreakable string is too long to fit in the containing box.' },
-//   { title: "Jakaś uwaga o długim tytule", date: "01.01.2020", positive: false },
-//   { title: "Tytuł 3", date: "01.01.2020", positive: false },
-//   { title: "Tytuł 4", date: "01.01.2020", positive: true },
-// ]
 
 const Title = () => {
   return <div className="title">Uwagi</div>

@@ -4,11 +4,6 @@ import { loginStudent } from '../connection/Connection';
 import { studentLogin } from '../connection/Session';
 import "./LoginPage/LoginPage.css";
 
-/**
- * TODO
- * * Checking data in server
- * * Error message 
- */
 
 const LoginPage = () => {
   const [studentCode, setStudentCode] = useState("");
@@ -72,7 +67,7 @@ const LoginPage = () => {
       transform: 'translate(-50%, -50%)',
       borderRadius: "50px"
     },
-    overlay:{
+    overlay: {
       backgroundColor: 'transparent'
     }
   };
