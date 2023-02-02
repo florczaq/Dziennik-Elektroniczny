@@ -5,12 +5,18 @@ import com.edziennik.spring.database_objects.*;
 import org.springframework.web.bind.annotation.*;
 import com.edziennik.spring.enums.DniTygodnia;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 @RestController
 @CrossOrigin
 public class Controller {
+
+	DatabaseManager dbManager = new DatabaseManager();
+
+	public Controller() throws SQLException, ClassNotFoundException {
+	}
 
 	@GetMapping("/student/{id}/grades")
 	public ArrayList<Grade> getStudentGrades(@PathVariable String id) {

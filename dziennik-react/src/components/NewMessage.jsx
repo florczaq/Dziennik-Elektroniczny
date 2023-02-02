@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import "./NewMessage/NewMessage.css"
 import { sendNewMessage } from '../connection/Connection';
+import * as Session from "../connection/Session";
+import { useNavigate } from 'react-router-dom';
 
 export default function NewMessage() {
   const [recipient, setRecipient] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = () => {
-    sendNewMessage({ title: title, from: "mikflo00", to: recipient, date: "2020-01-01", content: text })
-      .then(() => console.log("Message sent :D"))
+    const studentCode = Session.getLoggedStudentInfo().studentCode;
+    sendNewMessage({ title: title, from: studentCode, to: recipient, date: "2020-01-01", content: text })
+      .then(() => navigate("/"))
       .catch(() => console.warn("Smth went wrong :("));
   }
 
