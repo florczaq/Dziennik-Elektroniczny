@@ -19,16 +19,8 @@ public class Controller {
 	}
 
 	@GetMapping("/student/{id}/grades")
-	public ArrayList<Grade> getStudentGrades(@PathVariable String id) {
-		ArrayList<Grade> al = new ArrayList<>();
-		al.add(new Grade("5", "2020-01-01", "Matematyka"));
-		al.add(new Grade("5", "2020-01-01", "J. Polski"));
-		al.add(new Grade("4", "2020-01-01", "J. Angielski"));
-		al.add(new Grade("3", "2020-01-01", "Informatyka"));
-		al.add(new Grade("2", "2020-01-01", "Matematyka"));
-		al.add(new Grade("6", "2020-01-01", "HIS"));
-		al.add(new Grade("6", "2020-01-01", "HIS"));
-		return al;
+	public ArrayList<Grade> getStudentGrades(@PathVariable String id) throws SQLException {
+		return dbManager.getStudentGrades(id);
 	}
 
 	@GetMapping("/student/{id}/comments")
