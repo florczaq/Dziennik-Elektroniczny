@@ -49,8 +49,9 @@ public class Controller {
 	}
 
 	@PutMapping("/messages/read")
-	public void changeMessageState(@RequestParam() String id) {
+	public void changeMessageState(@RequestParam() String id) throws SQLException {
 		System.out.printf("Message %s has been read.%n", id);
+		dbManager.changeMessageStatus(id);
 	}
 
 	@GetMapping("/student/timetable")

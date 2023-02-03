@@ -114,4 +114,10 @@ public class DatabaseManager {
 			teachers.put(resultSet.getString("kod"), resultSet.getString("name"));
 		return teachers;
 	}
+
+	public void changeMessageStatus(String id) throws SQLException {
+		connection.prepareStatement(
+			String.format("CALL `edziennik`.`changeMessageStatus`(%s);", id)
+		).execute();
+	}
 }
