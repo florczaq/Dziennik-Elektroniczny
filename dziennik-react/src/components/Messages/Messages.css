@@ -21,13 +21,13 @@
 }
 
 .mc {
-	width: 85%;
+	width: 90%;
 	height: 45%;
 	margin-bottom: 3vh;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-  padding-top: 3vh;
+	padding-top: 3vh;
 }
 
 .message {
@@ -36,11 +36,13 @@
 	min-height: 6vh;
 	background-color: #7b889d;
 	color: #fff;
-  margin-bottom: 2vh;
-  cursor: pointer;
+	margin: 0 auto 2vh auto;
+	cursor: pointer;
+	width: 90%;
+	box-shadow: 4px 4px 10px #000;
 }
 
-.message:hover{
+.message:hover {
 	background-color: #6e7a8d;
 }
 

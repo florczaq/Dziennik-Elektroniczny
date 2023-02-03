@@ -18,11 +18,12 @@
 	display: flex;
 	flex-direction: column;
 	width: 60vw;
-	height: 15vh;
+	height: 20vh;
 	margin: 2vh 0;
 	background-color: #424e6d;
 	color: #fff;
 	font-size: 1.4rem;
+	box-shadow: 4px 4px 10px #000;
 }
 
 .single-news > .content-p {

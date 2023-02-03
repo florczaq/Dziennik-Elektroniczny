@@ -7,7 +7,7 @@ import com.edziennik.spring.enums.DniTygodnia;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -24,34 +24,23 @@ public class Controller {
 	}
 
 	@GetMapping("/student/{id}/comments")
-	public ArrayList<Comment> getStudentComments(@PathVariable String id) {
-		ArrayList<Comment> al = new ArrayList<>();
-		al.add(new Comment("Ta uwaga jest pozytywna", "Zawartość pozytywnej uwagi", "2020-01-01", true));
-		al.add(new Comment("Ta uwaga jest negatywna", "Zawartość negatywnej uwagi", "2020-01-01", false));
-		return al;
+	public ArrayList<Comment> getStudentComments(@PathVariable String id) throws SQLException {
+		return dbManager.getStudentComments(id);
 	}
 
 	@GetMapping("/student/{id}/info")
-	public Student getStudentInfo(@PathVariable String id) {
-		return new Student("Mikołaj", "Florczak", "Adres 123", "000000000", "email@example.com", "4ig", "mikflo00");
+	public Student getStudentInfo(@PathVariable String id) throws SQLException {
+		return dbManager.getStudentInfo(id);
 	}
 
 	@GetMapping("/school/news")
-	public ArrayList<News> getNews() {
-		ArrayList<News> al = new ArrayList<>();
-		for (int i = 1; i <= 30; i++)
-			al.add(new News(String.format("Tytuł %s", i), "2020-01-01", "123 123 123 123 123 123 123 "));
-		return al;
+	public ArrayList<News> getNews() throws SQLException {
+		return dbManager.getSchoolNews();
 	}
 
-	@GetMapping("/student/{id}/messages")
-	public ArrayList<Message> getStudentMessages(@PathVariable String id) {
-		ArrayList<Message> al = new ArrayList<>();
-		for (int i = 1; i <= 30; i++)
-			al.add(new Message(i, String.format("Tytuł wiadomości %S", i), "abcabc00", "mikflo00", "2020-01-01", "Ta wiadomość jest przeczytana", true));
-		for (int i = 31; i <= 60; i++)
-			al.add(new Message(i, String.format("Tytuł wiadomości %S", i), "bcabca00", "mikflo00", "2020-01-01", "Ta wiadomość jest nieprzeczytana", false));
-		return al;
+	@GetMapping("/student/messages")
+	public ArrayList<Message> getStudentMessages(@RequestParam(name = "c") String studentCode) throws SQLException {
+		return dbManager.getStudentMessages(studentCode);
 	}
 
 	@PostMapping("/newMessage")
@@ -60,12 +49,12 @@ public class Controller {
 	}
 
 	@PutMapping("/messages/read")
-	public void changeMessageState(@RequestParam(required = true) String id) {
+	public void changeMessageState(@RequestParam() String id) {
 		System.out.printf("Message %s has been read.%n", id);
 	}
 
 	@GetMapping("/student/timetable")
-	public ArrayList<Day> getStudentTimetable(@RequestParam(required = true) String classCode) {
+	public ArrayList<Day> getStudentTimetable(@RequestParam() String classCode) {
 
 		ArrayList<Day> timetable = new ArrayList<>();
 		ArrayList<Subject> subjects = new ArrayList<>();
@@ -85,9 +74,16 @@ public class Controller {
 	}
 
 	@GetMapping("/login")
-	public Student validateLoginData(@RequestParam(name = "s", required = true) String studentCode, @RequestParam(name = "p", required = true) String password) {
+	public Student validateLoginData(@RequestParam(name = "s") String studentCode, @RequestParam(name = "p") String password) {
 		if (studentCode.equals("admin") && password.equals("admin"))
 			return new Student("Mikołaj", "Florczak", "Adres 123", "000000000", "a@b.c", "4ig", "mikflo00");
 		return null;
 	}
+
+	@GetMapping("/school/teachers")
+	public Map<String, String> getListOfTeachers() throws SQLException {
+		return dbManager.getListOfTeachers();
+	}
+
+
 }

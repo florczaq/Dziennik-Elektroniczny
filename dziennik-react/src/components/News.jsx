@@ -9,7 +9,7 @@ const SingleNews = ({ title = "", date = "", content = "" }) => {
   return <div className='single-news'>
     <div className='main-info'>
       <p>{title}</p>
-      <p>Data: {date}</p>
+      <p>{date}</p>
     </div>
     <p className='content-p'>{content}</p>
   </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import { getStudentMessages, changeMessageState } from '../connection/Connection';
+import { getStudentMessages, changeMessageState, getTeachersList } from '../connection/Connection';
+import * as Session from "../connection/Session";
 
 import "./Messages/Messages.css";
 
@@ -25,10 +26,10 @@ const Message = ({ from = "", title = "", date, content, onClick }) => {
 
 const renderMessages = (read = false, data = [], navigate) => data
   .filter(e => { return e.read === read })
-  .map((e, i) => {
-    return <Message key={i} {...e} onClick={() => {
-      navigate("/messages/read", { state: { ...e } });
-      changeMessageState(e.id).catch(err => console.error(err));
+  .map((message, i) => {
+    return <Message key={i} {...message} onClick={() => {
+      navigate("/messages/read", { state: { ...message } });
+      changeMessageState(message.id).catch(err => console.error(err));
     }} />
   })
 
@@ -38,8 +39,22 @@ export default function Messages() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getStudentMessages(1)
-      .then(res => setData(res.data))
+    getStudentMessages(Session.getLoggedStudentInfo().studentCode)
+      .then(response => {
+        getTeachersList()
+          .then(
+            teachers => {
+              response.data = response.data.map(
+                wiadomosc => {
+                  wiadomosc['from'] = teachers.data[wiadomosc.from];
+                  return wiadomosc;
+                }
+              )
+              setData(response.data)
+            }
+          )
+          .catch(err => console.error(err));
+      })
       .catch(err => console.error(err));
   }, []);
 

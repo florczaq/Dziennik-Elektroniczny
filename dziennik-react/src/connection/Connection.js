@@ -6,8 +6,8 @@ export const getStudentInfo = (id) => {
   return axios.get(`${localhost}/student/${id}/info`);
 }
 
-export const getStudentMessages = (id) => {
-  return axios.get(`${localhost}/student/${id}/messages`);
+export const getStudentMessages = (studentCode) => {
+  return axios.get(`${localhost}/student/messages?c=${studentCode}`);
 }
 
 export const sendNewMessage = (message) => {
@@ -37,3 +37,8 @@ export const loginStudent = (studentCode, password) => {
 export const getStudentComments = (id) => {
   return axios.get(`${localhost}/student/${id}/comments`);
 }
+
+export const getTeachersList=()=>{
+  return axios.get(`${localhost}/school/teachers`)
+}
+
