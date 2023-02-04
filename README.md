@@ -39,7 +39,9 @@ Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji 
 
 ### Struktura projektu
 
-    ![Untitled Diagram](https://user-images.githubusercontent.com/84631301/216786141-c510c3f5-24be-4326-9941-2bc54c32f282.png)
+
+ ![Untitled Diagram](https://user-images.githubusercontent.com/84631301/216786592-a7c3ba46-f812-478d-9ce3-ba1b861d3594.png)
+
 
 
 ### Rozbudowa projektu
