@@ -2,10 +2,10 @@
 React,js, Java Spring, MySQL
 
 ### Informacje o projekcie
- Autor: Florczak Mikołaj
- Klasa: 4ig
- Nazwa przedmiotu: Informatyka
- Nazwa projektu: Dziennik elektroniczny 
+ #### Autor: Florczak Mikołaj 
+ #### Klasa: 4ig
+ #### Nazwa przedmiotu: Informatyka
+ #### Nazwa projektu: Dziennik elektroniczny 
 
 Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji webowej. 
 
