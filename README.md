@@ -1,10 +1,11 @@
 # Dziennik-Elektroniczny
 React,js, Java Spring, MySQL
 
-### Autor: Florczak Mikołaj
-### Klasa: 4ig
-### Nazwa przedmiotu: Informatyka
-### Nazwa projektu: Dziennik elektroniczny 
+### Informacje o projekcie
+ Autor: Florczak Mikołaj
+ Klasa: 4ig
+ Nazwa przedmiotu: Informatyka
+ Nazwa projektu: Dziennik elektroniczny 
 
 Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji webowej. 
 
@@ -38,8 +39,19 @@ Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji 
 
 ### Struktura projektu
 
-![Untitled Diagram](https://user-images.githubusercontent.com/84631301/216786141-c510c3f5-24be-4326-9941-2bc54c32f282.png)
+    ![Untitled Diagram](https://user-images.githubusercontent.com/84631301/216786141-c510c3f5-24be-4326-9941-2bc54c32f282.png)
 
 
+### Rozbudowa projektu
+  Projekt można poszerzyć o żadziej użwyanie opcje (jak np. zastępstwa, frekwencja itp.). Ja jednak skupiłem się na najczęściej (moim zdaniem) używane przez uczniów opcje. Jest to strona ucznia, więc można by było rozbudować projekt o stronę nauczyciela, ale jest to dużo bardziej skomplikowany projekt i co ważniejsze bardziej czasochłonny. 
+  
+  
+### Urochomenie projektu
+  Aby uruchomić projekt potrzebny jest specjalnie skonfigurowane urządzenie. 
+  Potrzebne jest oprogramowanie takie jak NPM oraz Node.js dla Klienta oraz MAVEN i Java dla Serwera.
+  
+### Źródła
+  - https://spring.io/guides
+  - https://reactjs.org/docs/create-a-new-react-app.html
 
 
