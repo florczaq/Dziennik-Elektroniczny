@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getStudentTimetable } from '../connection/Connection'
+import * as Session from "../connection/Session"
+
 import "./Timetable/Timetable.css"
 
 const hours = [
@@ -19,12 +20,9 @@ const Timetable = () => {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
-    getStudentTimetable("4ig")
-      .then(
-        res => setDays(res.data)
-        // res => console.log(res.data)
-      )
-      .catch();
+    getStudentTimetable(Session.getLoggedStudentInfo().classCode)
+      .then(res => setDays(res.data))
+      .catch(err => console.error(err));
   }, []);
 
   return (
@@ -35,9 +33,7 @@ const Timetable = () => {
             <th />
             {
               days.map(
-                (day, i) => {
-                  return <td key={i}>{day.name}</td>
-                }
+                (day, i) => <td key={i}>{day.name}</td>
               )
             }
           </tr>
@@ -53,13 +49,7 @@ const Timetable = () => {
                   </td>
                   {
                     days.map(
-                      (day, j) => {
-                        let val = ""
-                        try {
-                          val = day.subjects[i].name;
-                        } catch (e) { }
-                        return <td key={j}>{val}</td>
-                      }
+                      (day, j) => <td key={j}>{day.subjects[i]?.name}</td>
                     )
                   }
                 </tr>

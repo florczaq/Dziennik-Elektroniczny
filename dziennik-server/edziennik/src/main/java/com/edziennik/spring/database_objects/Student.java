@@ -1,6 +1,7 @@
 package com.edziennik.spring.database_objects;
 
 public class Student {
+	int id;
 	String firstName;
 	String lastName;
 	String address;
@@ -12,8 +13,9 @@ public class Student {
 	public Student() {
 	}
 
-	public Student(String firstName, String lastName, String address, String phoneNumber, String email, String classCode, String studentCode)
+	public Student(int id, String firstName, String lastName, String address, String phoneNumber, String email, String classCode, String studentCode)
 	{
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -26,7 +28,8 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student{" +
-			"firstName='" + firstName + '\'' +
+			"id=" + id +
+			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
 			", address='" + address + '\'' +
 			", phoneNumber='" + phoneNumber + '\'' +
@@ -90,5 +93,13 @@ public class Student {
 
 	public void setClassCode(String classCode) {
 		this.classCode = classCode;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

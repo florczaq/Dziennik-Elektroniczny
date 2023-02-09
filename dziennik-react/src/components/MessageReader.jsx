@@ -1,10 +1,10 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-import "./NewMessage/NewMessage.css"
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import "./NewMessage/NewMessage.css";
 
 export default function MessageReader() {
   const { state } = useLocation();
-  
+
   return (
     <div className='newmessage-container'>
       <p className='newmessage-title'>{state.title}</p>

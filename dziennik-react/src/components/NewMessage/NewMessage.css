@@ -45,7 +45,7 @@
 	height: 7vh;
 }
 
-.address-info input {
+.address-info input, .address-info select {
 	background-color: #7b889d;
 	width: 18vw;
 	height: 7vh;
@@ -73,8 +73,7 @@
 	margin-top: 5vh;
 }
 
-
-.newmessage-container .button-container{
+.newmessage-container .button-container {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -83,7 +82,7 @@
 	margin: 3vh;
 }
 
-.newmessage-container button{
+.newmessage-container button {
 	font-size: 1.4rem;
 	background-color: rgb(200, 20, 20);
 	color: #fff;
@@ -91,14 +90,14 @@
 	height: 7vh;
 }
 
-.newmessage-container button:hover{
+.newmessage-container button:hover {
 	background-color: rgb(149, 57, 57);
 }
 
-.newmessage-container button:nth-child(2){
+.newmessage-container button:nth-child(2) {
 	background-color: rgb(20, 134, 20);
 }
 
-.newmessage-container button:nth-child(2):hover{
+.newmessage-container button:nth-child(2):hover {
 	background-color: rgb(19, 101, 19);
 }

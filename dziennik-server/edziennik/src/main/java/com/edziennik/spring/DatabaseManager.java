@@ -1,9 +1,11 @@
 package com.edziennik.spring;
 
 import com.edziennik.spring.database_objects.*;
+import com.edziennik.spring.enums.DniTygodnia;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +58,7 @@ public class DatabaseManager {
 
 		if (resultSet.next()) {
 			return new Student(
+				resultSet.getInt("id"),
 				resultSet.getString("imie"),
 				resultSet.getString("nazwisko"),
 				resultSet.getString("adres"),
@@ -119,5 +122,40 @@ public class DatabaseManager {
 		connection.prepareStatement(
 			String.format("CALL `edziennik`.`changeMessageStatus`(%s);", id)
 		).execute();
+	}
+
+	public ArrayList<Day> getTimetable(String classCode) throws SQLException {
+		PreparedStatement preparedStatement = connection.prepareStatement(String.format("CALL `edziennik`.`getTimetable`('%s');", classCode));
+		ResultSet resultSet = preparedStatement.executeQuery();
+		ArrayList<Day> timetable = new ArrayList<>();
+		ArrayList<Subject> subjects = new ArrayList<>();
+
+		int dzien = 1;
+		int newDzien = 1;
+		int godzina = 1;
+		int newGodzina = 1;
+
+		DniTygodnia[] dniTygonia = DniTygodnia.values();
+
+		while (resultSet.next()) {
+			newDzien = resultSet.getInt("dzien");
+			newGodzina = resultSet.getInt("godzina");
+
+			if (newDzien > dzien) {
+				timetable.add(new Day(dniTygonia[dzien - 1].label, subjects));
+				dzien = newDzien;
+				subjects = new ArrayList<>();
+				godzina = 1;
+			}
+
+			if (newGodzina > godzina)
+				subjects.add(new Subject("", godzina++));
+
+			godzina++;
+			subjects.add(new Subject(resultSet.getString("nazwa"), newGodzina));
+		}
+		timetable.add(new Day(dniTygonia[dzien - 1].label, subjects));
+
+		return timetable;
 	}
 }

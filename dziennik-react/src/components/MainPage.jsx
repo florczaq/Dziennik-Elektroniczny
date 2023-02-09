@@ -1,19 +1,13 @@
 import React from "react";
-import "./MainPage/MainPage.css"
-import oceny from "../assets/Images/MainPage/oceny.svg";
+import { useNavigate } from "react-router-dom";
 import aktualnosci from "../assets/Images/MainPage/aktualnosci.svg";
+import oceny from "../assets/Images/MainPage/oceny.svg";
 import planLekcji from "../assets/Images/MainPage/plan-lekcji.svg";
 import uczen from "../assets/Images/MainPage/uczen.svg";
 import uwagi from "../assets/Images/MainPage/uwagi.svg";
 import wiadomosci from "../assets/Images/MainPage/wiadomosci.svg";
-import { useNavigate } from "react-router-dom";
-
-const ButtonBox = ({ text = "", iconName = "", onClick }) => {
-  return <div className="buttonbox" onClick={onClick}>
-    <img src={iconName} alt="Button" />
-    <p>{text}</p>
-  </div>
-}
+import ButtonBox from "./MainPage/ButtonBox";
+import "./MainPage/MainPage.css";
 
 const MainPage = () => {
   const navigate = useNavigate();

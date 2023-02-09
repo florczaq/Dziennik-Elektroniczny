@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import "./StudentInfo/StudentInfo.css";
 import profilePicture from "../assets/Images/profile.svg";
 import { getStudentInfo } from "../connection/Connection";
+import * as Session from "../connection/Session";
+import "./StudentInfo/StudentInfo.css";
 
 
 const StudentInfo = () => {
   const [data, setData] = useState({});
 
   React.useEffect(() => {
-    getStudentInfo(1).then(res => setData(res.data));
+    getStudentInfo(Session.getLoggedStudentInfo().id)
+      .then(res => setData(res.data));
   }, []);
 
   return <div className="studentinfo-container">
