@@ -121,7 +121,7 @@ CREATE TABLE `plan_lekcji` (
 
 LOCK TABLES `plan_lekcji` WRITE;
 /*!40000 ALTER TABLE `plan_lekcji` DISABLE KEYS */;
-INSERT INTO `plan_lekcji` VALUES (1,5,'1','1','4ig'),(2,6,'1','2','4ig'),(3,1,'1','3','4ig'),(4,1,'1','4','4ig'),(5,2,'1','5','4ig'),(6,2,'1','6','4ig'),(7,7,'1','7','4ig'),(8,8,'1','8','4ig'),(9,1,'2','1','4ig'),(10,1,'2','2','4ig'),(11,2,'2','3','4ig'),(12,4,'2','4','4ig'),(13,4,'2','5','4ig'),(14,3,'3','1','4ig'),(15,3,'3','2','4ig'),(16,5,'3','3','4ig'),(17,5,'3','4','4ig'),(18,4,'3','5','4ig'),(19,4,'3','6','4ig'),(20,8,'3','7','4ig'),(21,1,'3','8','4ig'),(22,9,'4','1','4ig'),(23,1,'4','2','4ig'),(24,1,'4','3','4ig'),(25,7,'4','4','4ig'),(26,3,'4','5','4ig'),(27,8,'4','6','4ig'),(28,4,'5','1','4ig'),(29,9,'5','2','4ig'),(30,2,'5','3','4ig'),(31,7,'5','4','4ig'),(32,1,'5','5','4ig'),(33,3,'5','6','4ig');
+INSERT INTO `plan_lekcji` VALUES (1,5,'1','1','4ig'),(2,6,'1','2','4ig'),(3,1,'1','3','4ig'),(4,1,'1','4','4ig'),(5,2,'1','5','4ig'),(6,2,'1','6','4ig'),(7,7,'1','7','4ig'),(8,8,'1','8','4ig'),(9,1,'2','1','4ig'),(10,1,'2','2','4ig'),(11,2,'2','3','4ig'),(12,4,'2','4','4ig'),(13,4,'2','5','4ig'),(14,3,'3','9','4ig'),(15,3,'3','2','4ig'),(16,5,'3','3','4ig'),(17,5,'3','4','4ig'),(18,4,'3','5','4ig'),(19,4,'3','6','4ig'),(20,8,'3','7','4ig'),(21,1,'3','8','4ig'),(22,9,'4','1','4ig'),(23,1,'4','2','4ig'),(24,1,'4','3','4ig'),(25,7,'4','4','4ig'),(26,3,'4','5','4ig'),(27,8,'4','6','4ig'),(28,4,'5','1','4ig'),(29,9,'5','2','4ig'),(30,2,'5','3','4ig'),(31,7,'5','4','4ig'),(32,1,'5','5','4ig'),(33,3,'5','6','4ig');
 /*!40000 ALTER TABLE `plan_lekcji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,9 +236,13 @@ CREATE TABLE `wiadomosci` (
 
 LOCK TABLES `wiadomosci` WRITE;
 /*!40000 ALTER TABLE `wiadomosci` DISABLE KEYS */;
-INSERT INTO `wiadomosci` VALUES (1,'Wycieczka do Warszawy','Organizowana jest wycieczka do warszawy dnia 01.06.2023 . Proszę o zgłoszenie się do mnie osób chętnych.','radand00','mikflo00',1,'2023-02-15'),(2,'Ankieta','Proszę o wypełnienie ankiety. Pomoże ona w pracy magisterskiej jednego z studentów Politechniki Rzeszowskiej. http:/www.example.com/','helwas00','mikflo00',0,'2023-01-28'),(3,'Wywiadówka','Dnia 25.03.2023 jest organizowana wywiadówka. Proszę o przekazanie informacji rodzicom.','radand00','mikflo00',0,'2023-02-20');
+INSERT INTO `wiadomosci` VALUES (1,'Wycieczka do Warszawy','Organizowana jest wycieczka do warszawy dnia 01.06.2023 . Proszę o zgłoszenie się do mnie osób chętnych.','radand00','mikflo00',1,'2023-02-15'),(2,'Ankieta','Proszę o wypełnienie ankiety. Pomoże ona w pracy magisterskiej jednego z studentów Politechniki Rzeszowskiej. http:/www.example.com/','helwas00','mikflo00',1,'2023-01-28'),(3,'Wywiadówka','Dnia 25.03.2023 jest organizowana wywiadówka. Proszę o przekazanie informacji rodzicom.','radand00','mikflo00',1,'2023-02-20');
 /*!40000 ALTER TABLE `wiadomosci` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'edziennik'
+--
 
 --
 -- Dumping routines for database 'edziennik'
@@ -379,6 +383,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getTimetable` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTimetable`(classCode varchar(5))
+BEGIN
+	SELECT pl.id, p.nazwa, dzien, godzina, klasa 
+    FROM plan_lekcji as pl 
+    inner join przedmioty as p 
+    ON p.id = przedmiot_id 
+    WHERE klasa = classCode
+    ORDER BY dzien,godzina;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -389,4 +418,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-04 20:15:37
+-- Dump completed on 2023-02-09 20:07:34

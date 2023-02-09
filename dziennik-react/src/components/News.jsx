@@ -1,9 +1,6 @@
-import React from 'react'
-import "./News/News.css";
-
+import React, { useEffect, useState } from 'react';
 import { getSchoolNews } from '../connection/Connection';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import "./News/News.css";
 
 const SingleNews = ({ title = "", date = "", content = "" }) => {
   return <div className='single-news'>
@@ -20,18 +17,17 @@ export default function News() {
 
   useEffect(() => {
     getSchoolNews()
-      .then(res => setData(res.data))
-      .catch(err=>console.error(`Smth went wrong. ${err}`));
-  }, []);
+    .then(res => setData(res.data))
+    .catch(err => console.error(err))
+  },
+    []);
+
+  const renderNews = data.map((e, i) => <SingleNews key={i} {...e} />)
 
   return (
     <div className='news-container'>
       <div className='news'>
-        {
-          data.map((e, i) => {
-            return <SingleNews key={i} {...e} />
-          })
-        }
+        {renderNews}
       </div>
     </div>
   )

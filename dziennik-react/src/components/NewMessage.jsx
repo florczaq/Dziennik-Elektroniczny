@@ -12,13 +12,14 @@ export default function NewMessage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getTeachersList().then(res => {
-      let arr = [];
-      for (const value in res.data)
-        arr.push({ code: value, name: res.data[value] });
-      setRecipientList(arr)
-    })
-  }, [])
+    getTeachersList()
+      .then(res => {
+        let arr = [];
+        for (const value in res.data)
+          arr.push({ code: value, name: res.data[value] });
+        setRecipientList(arr)
+      }, [])
+  })
 
   const onSubmit = () => {
     if (!recipient) {
@@ -34,24 +35,21 @@ export default function NewMessage() {
 
   return (
     <div className='newmessage-container'>
-
       <p className='newmessage-title'>New Message</p>
-
       <div className='address-info'>
         <div>
           <p> Do: </p>
           <select value={recipient} onChange={e => setRecipient(e.target.value)}>
             <option value={undefined}> </option>
-            {recipientList.map((element, i) => <option key={i} value={element.code}>{element.name}</option>)}
+            {recipientList.map((element, i) => { return <option key={i} value={element.code}>{element.name}</option> })}
           </select>
         </div>
         <div>
-          <p> Tytuł: </p><input className='title-input' type="text" value={title} onChange={e => setTitle(e.target.value)} />
+          <p> Tytuł: </p>
+          <input className='title-input' type="text" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
       </div>
-
       <textarea name="" id="" value={text} onChange={e => setText(e.target.value)} />
-
       <div className='button-container'>
         <button>Anuluj</button>
         <button onClick={onSubmit}>Wyślij</button>

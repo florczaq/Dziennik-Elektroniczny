@@ -46,8 +46,7 @@ Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji 
 
 ### Rozbudowa projektu
   Projekt można poszerzyć o żadziej użwyanie opcje (jak np. zastępstwa, frekwencja itp.). Ja jednak skupiłem się na najczęściej (moim zdaniem) używane przez uczniów opcje. Jest to strona ucznia, więc można by było rozbudować projekt o stronę nauczyciela, ale jest to dużo bardziej skomplikowany projekt i co ważniejsze bardziej czasochłonny. 
-  
-  
+    
 ### Urochomenie projektu
   Aby uruchomić projekt potrzebny jest specjalnie skonfigurowane urządzenie. 
   Potrzebne jest oprogramowanie takie jak NPM oraz Node.js dla Klienta oraz MAVEN i Java dla Serwera.
@@ -55,5 +54,3 @@ Projekt przedstawia dziennik elektroniczny po stronie ucznia w formie aplikacji 
 ### Źródła
   - https://spring.io/guides
   - https://reactjs.org/docs/create-a-new-react-app.html
-
-

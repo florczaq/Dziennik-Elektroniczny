@@ -1,17 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-
 import Comments from './components/Comments';
 import Grades from './components/Grades';
+import Header from './components/Header';
 import LoginPage from './components/LoginPage';
 import MainPage from './components/MainPage';
 import MessageReader from './components/MessageReader';
 import Messages from './components/Messages';
 import NewMessage from './components/NewMessage';
 import News from './components/News';
+import Sidebar from './components/Sidebar';
 import StudentInfo from './components/StudentInfo';
 import Timetable from './components/Timetable';
 import * as Session from './connection/Session';
@@ -20,7 +18,7 @@ const Element = ({ Component }) => {
   return <div className='content'>
     <Header />
     {Component !== MainPage && <Sidebar />}
-    {Session.isUserLoggedIn ? <Component/> : <LoginPage/>}
+    {Session.isUserLoggedIn ? <Component /> : <LoginPage />}
   </div>
 }
 
