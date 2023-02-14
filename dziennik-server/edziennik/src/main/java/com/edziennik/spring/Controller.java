@@ -43,10 +43,9 @@ public class Controller {
 		return dbManager.getStudentMessages(studentCode);
 	}
 
-	// TODO: 05.02.2023 save messages in database 
 	@PostMapping("/messages/new")
-	public void sendNewMessage(@RequestBody Message message) {
-		System.out.println(message.toString());
+	public void sendNewMessage(@RequestBody Message message) throws SQLException {
+		dbManager.sendNewMessage(message);
 	}
 
 	@PutMapping("/messages/read")
@@ -59,6 +58,7 @@ public class Controller {
 		return dbManager.getTimetable(classCode);
 	}
 
+	// TODO: 14.02.2023 Login system  
 	@GetMapping("/login")
 	public Student validateLoginData(@RequestParam(name = "s") String studentCode, @RequestParam(name = "p") String password) {
 		if (studentCode.equals("admin") && password.equals("admin"))

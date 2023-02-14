@@ -158,4 +158,17 @@ public class DatabaseManager {
 
 		return timetable;
 	}
+
+	public void sendNewMessage(Message message) throws SQLException {
+		PreparedStatement preparedStatement = connection.prepareStatement(
+			String.format("CALL `edziennik`.`sendNewMessage`('%s', '%s', '%s', '%s');",
+				message.getTitle(),
+				message.getContent(),
+				message.getFrom(),
+				message.getTo()
+			)
+		);
+		preparedStatement.execute();
+	}
+
 }
