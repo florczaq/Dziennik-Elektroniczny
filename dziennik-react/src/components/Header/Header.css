@@ -29,3 +29,15 @@
   margin: 0 1vw;
   width: 4.vw;
 }
+
+.header-container > .zalogowany-uczen > button{
+	cursor: pointer;
+  background-color: #2e4b82;
+	color: #fff;
+	margin: 1vw;
+	padding: 1vh 1vw;
+}
+
+.header-container > .zalogowany-uczen > button:hover{
+	background-color: red;
+}

@@ -60,10 +60,8 @@ public class Controller {
 
 	// TODO: 14.02.2023 Login system  
 	@GetMapping("/login")
-	public Student validateLoginData(@RequestParam(name = "s") String studentCode, @RequestParam(name = "p") String password) {
-		if (studentCode.equals("admin") && password.equals("admin"))
-			return new Student(1, "Mikołaj", "Florczak", "Adres 123", "000000000", "a@b.c", "4ig", "mikflo00");
-		return null;
+	public Student validateLoginData(@RequestParam(name = "s") String studentCode, @RequestParam(name = "p") String password) throws SQLException {
+		return dbManager.loginStudent(studentCode, password);
 	}
 
 	@GetMapping("/school/teachers")

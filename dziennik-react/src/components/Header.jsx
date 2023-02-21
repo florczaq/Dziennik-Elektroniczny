@@ -11,10 +11,14 @@ const Header = () => {
   return (
     <div className='header-container'>
       <div className='tytul'>Dziennik<br />Elektroniczny</div>
-      <div className='zalogowany-uczen'>
-        {data.firstName} {data.lastName}
-        <img src={profile} alt="" />
-      </div>
+      {
+        Session.isUserLoggedIn &&
+        <div className='zalogowany-uczen' >
+          {data.firstName} {data.lastName}
+          <img src={profile} alt="" />
+          <button onClick={Session.logoutStudent} title="Naciśnij aby wylogować">Wyloguj</button>
+        </div>
+      }
     </div>
   )
 }

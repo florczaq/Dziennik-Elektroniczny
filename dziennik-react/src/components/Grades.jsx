@@ -18,19 +18,25 @@ const Grades = () => {
       .catch(err => console.error(err));
   }, []);
 
+  const renderSubjects = () =>
+    subjects
+      .map(
+        (subject, i) => {
+          return <Subject
+            key={i}
+            name={subject}
+            grades={
+              grades.filter(
+                grade => grade.subject === subject
+              )
+            }
+          />
+        })
 
   return (
     <div className="grades-container">
       {
-        subjects.map((subject, i) => {
-          return <Subject
-            key={i}
-            name={subject}
-            grades={grades.filter(
-              grade => { return grade.subject === subject })
-            }
-          />
-        })
+        renderSubjects()
       }
     </div>)
 }

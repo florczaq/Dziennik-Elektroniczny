@@ -171,4 +171,27 @@ public class DatabaseManager {
 		preparedStatement.execute();
 	}
 
+	public Student loginStudent(String studentCode, String password) throws SQLException {
+		PreparedStatement preparedStatement = connection.prepareStatement(
+			String.format(
+				"CALL `edziennik`.`loginStudent`('%s', '%s');", studentCode, password
+			)
+		);
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next())
+			return new Student(
+				resultSet.getInt("id"),
+				resultSet.getString("imie"),
+				resultSet.getString("nazwisko"),
+				resultSet.getString("adres"),
+				resultSet.getString("numer_telefonu"),
+				resultSet.getString("email"),
+				resultSet.getString("klasa"),
+				resultSet.getString("kod")
+			);
+		return null;
+	}
+
 }

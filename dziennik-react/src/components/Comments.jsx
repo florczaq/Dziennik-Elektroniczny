@@ -7,9 +7,8 @@ import "./Comments/Comments.css";
 import Modal from "./Comments/Modal";
 
 
-const Title = () => {
-  return <div className="title">Uwagi</div>
-}
+const Title = () => <div className="title">Uwagi</div>
+
 
 const renderComments = (comments, onCommentOpen) => comments.map(
   (e, i) => {
