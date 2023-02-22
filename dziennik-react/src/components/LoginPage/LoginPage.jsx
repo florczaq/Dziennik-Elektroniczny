@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { loginStudent } from '../connection/Connection';
-import { studentLogin } from '../connection/Session';
-import "./LoginPage/LoginPage.css";
-import Loader from './LoginPage/Loader';
+import { loginStudent } from '../../connection/Connection';
+import { studentLogin } from '../../connection/Session';
+import "./LoginPage.css";
+import Loader from './Loader';
 
 const LoginPromt = () => {
   return <div className='login-prompt'>
@@ -18,10 +18,10 @@ const LoginPage = () => {
   const validate = () => {
     if (studentCode !== "" && password !== "")
       return true;
-
-    const wrongDataMessage = document.getElementById('wrong-data-alert');
-    wrongDataMessage.classList.add("not-empty")
-    wrongDataMessage.innerHTML = "Uzupełnij wszystie dane";
+ 
+    const errorMessage = document.getElementById('wrong-data-alert');
+    errorMessage.classList.add("not-empty")
+    errorMessage.innerHTML = "Uzupełnij wszystie dane";
 
     return false;
   }
@@ -46,9 +46,9 @@ const LoginPage = () => {
   }
 
   const hideErrorMessage = () => {
-    const wrongDataMessage = document.getElementById("wrong-data-alert");
-    if (wrongDataMessage.classList.contains("not-empty"))
-      wrongDataMessage.classList.remove("not-empty");
+    const errorMessageClassList = document.getElementById("wrong-data-alert").classList;
+    errorMessageClassList.contains("not-empty") &&
+      errorMessageClassList.remove("not-empty");
   }
 
   const handleChanges = (event) => {
@@ -62,9 +62,9 @@ const LoginPage = () => {
 
   return (
     <div className='login-container'>
-      
+
       <Loader showLoader={showLoader} />
-      <LoginPromt/>
+      <LoginPromt />
 
       <div className='login-data'>
         <input id='studentCode' type="text" placeholder='Kod ucznia' value={studentCode} onChange={handleChanges} />

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getStudentGrades } from "../connection/Connection";
-import * as Session from "../connection/Session";
-import "./Grades/Grades.css";
-import Subject from "./Grades/Subject";
+import { getStudentGrades } from "../../connection/Connection";
+import * as Session from "../../connection/Session";
+import "./Grades.css";
+import Subject from "./Subject";
 
 
 const Grades = () => {

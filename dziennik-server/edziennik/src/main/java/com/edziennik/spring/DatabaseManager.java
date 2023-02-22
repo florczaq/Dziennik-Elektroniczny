@@ -5,12 +5,11 @@ import com.edziennik.spring.enums.DniTygodnia;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DatabaseManager {
-	private Connection connection = null;
+	private final Connection connection;
 
 	DatabaseManager() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -131,9 +130,9 @@ public class DatabaseManager {
 		ArrayList<Subject> subjects = new ArrayList<>();
 
 		int dzien = 1;
-		int newDzien = 1;
+		int newDzien;
 		int godzina = 1;
-		int newGodzina = 1;
+		int newGodzina;
 
 		DniTygodnia[] dniTygonia = DniTygodnia.values();
 

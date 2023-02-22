@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import profilePicture from "../assets/Images/profile.svg";
-import { getStudentInfo } from "../connection/Connection";
-import * as Session from "../connection/Session";
-import "./StudentInfo/StudentInfo.css";
+import profilePicture from "../../assets/Images/profile.svg";
+import { getStudentInfo } from "../../connection/Connection";
+import * as Session from "../../connection/Session";
+import "./StudentInfo.css";
 
 
 const StudentInfo = () => {

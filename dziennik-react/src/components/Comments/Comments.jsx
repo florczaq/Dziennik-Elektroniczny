@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReactModal from "react-modal";
-import { getStudentComments } from "../connection/Connection";
-import * as Session from "../connection/Session";
-import Comment from "./Comments/Comment";
-import "./Comments/Comments.css";
-import Modal from "./Comments/Modal";
+import { getStudentComments } from "../../connection/Connection";
+import * as Session from "../../connection/Session";
+import Comment from "./SingleComment";
+import "./Comments.css";
+import Modal from "./Modal";
 
 
 const Title = () => <div className="title">Uwagi</div>

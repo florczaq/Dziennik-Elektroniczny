@@ -30,9 +30,3 @@ public class Day {
 		this.subjects = subjects;
 	}
 }
-
-
-
-/**
- * SELECT p.nazwa, dzien, godzina FROM plan_lekcji INNER JOIN przedmioty as p ON p.id = przedmiot_id WHERE klasa = "4ig" ORDER BY dzien, godzina;
- */

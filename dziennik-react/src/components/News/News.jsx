@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getSchoolNews } from '../connection/Connection';
-import "./News/News.css";
+import { getSchoolNews } from '../../connection/Connection';
+import "./News.css";
 
 const SingleNews = ({ title = "", date = "", content = "" }) => {
   return <div className='single-news'>

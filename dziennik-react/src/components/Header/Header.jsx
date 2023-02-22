@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import profile from "../assets/Images/profile.svg";
-import * as Session from "../connection/Session";
-import "./Header/Header.css";
+import profile from "../../assets/Images/profile.svg";
+import * as Session from "../../connection/Session";
+import "./Header.css";
 
 const Header = () => {
   const [data, setData] = useState({});

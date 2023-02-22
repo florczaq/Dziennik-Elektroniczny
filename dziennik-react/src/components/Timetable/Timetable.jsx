@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { getStudentTimetable } from '../connection/Connection'
-import * as Session from "../connection/Session"
+import { getStudentTimetable } from '../../connection/Connection'
+import * as Session from "../../connection/Session"
 
-import "./Timetable/Timetable.css"
+import "./Timetable.css"
+
+const Subjects = ({ hours, days }) => {
+  return hours.map(
+    (hour, i) => {
+      return <tr key={i}>
+        <td className='hour'>
+          <p>{hour.number}.</p>
+          <p>{hour.time}</p>
+        </td>
+        {days.map((day, j) => <td key={j}>{day.subjects[i]?.name}</td>)}
+      </tr>
+    }
+  )
+}
 
 const Timetable = () => {
   const [days, setDays] = useState([]);
@@ -26,40 +40,20 @@ const Timetable = () => {
   }, []);
 
 
-  const renderSubjects =
-    hours.map(
-      (hour, i) => {
-        return <tr key={i}>
-          <td className='hour'>
-            <p>{hour.number}.</p>
-            <p>{hour.time}</p>
-          </td>
-          {
-            days.map(
-              (day, j) => <td key={j}>{day.subjects[i]?.name}</td>
-            )
-          }
-        </tr>
-      }
-    )
-
-  const renderDaysName = days.map((day, i) => <td key={i}>{day.name}</td>)
+  const renderDaysName = () =>days.map((day, i) => <td key={i}>{day.name}</td>)
 
   return (
     <div className='timetable-container'>
       <table>
-
         <thead>
           <tr>
             <th />
-            {renderDaysName}
+            {renderDaysName()}
           </tr>
         </thead>
-
         <tbody>
-          {renderSubjects}
+          <Subjects hours={hours} days={days} />
         </tbody>
-
       </table>
     </div>
   )

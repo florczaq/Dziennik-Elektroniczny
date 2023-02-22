@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import "./NewMessage/NewMessage.css";
+import "./NewMessage.css";
 
 export default function MessageReader() {
   const { state } = useLocation();

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { changeMessageState, getStudentMessages, getTeachersList } from '../connection/Connection';
-import * as Session from "../connection/Session";
-import Message from './Messages/Message';
+import { changeMessageState, getStudentMessages, getTeachersList } from '../../connection/Connection';
+import * as Session from "../../connection/Session";
+import Message from './SingleMessage';
 
-import "./Messages/Messages.css";
+import "./Messages.css";
 
 const TitleBar = ({ title }) => {
   return (

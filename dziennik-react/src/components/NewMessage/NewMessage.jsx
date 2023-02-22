@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getTeachersList, sendNewMessage } from '../connection/Connection';
-import * as Session from "../connection/Session";
-import "./NewMessage/NewMessage.css";
+import { getTeachersList, sendNewMessage } from '../../connection/Connection';
+import * as Session from "../../connection/Session";
+import "./NewMessage.css";
 
 export default function NewMessage() {
   const [recipient, setRecipient] = useState(undefined);

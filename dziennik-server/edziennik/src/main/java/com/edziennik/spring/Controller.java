@@ -3,7 +3,6 @@ package com.edziennik.spring;
 
 import com.edziennik.spring.database_objects.*;
 import org.springframework.web.bind.annotation.*;
-import com.edziennik.spring.enums.DniTygodnia;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -58,7 +57,6 @@ public class Controller {
 		return dbManager.getTimetable(classCode);
 	}
 
-	// TODO: 14.02.2023 Login system  
 	@GetMapping("/login")
 	public Student validateLoginData(@RequestParam(name = "s") String studentCode, @RequestParam(name = "p") String password) throws SQLException {
 		return dbManager.loginStudent(studentCode, password);
