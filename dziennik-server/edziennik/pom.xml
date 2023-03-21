@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.edziennik</groupId>
-	<artifactId>rest</artifactId>
+	<artifactId>edziennik</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>edziennik</name>
 	<description>Rest  API server</description>
@@ -35,10 +35,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+		</dependency>
 
 	</dependencies>
 
+
+
 	<build>
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

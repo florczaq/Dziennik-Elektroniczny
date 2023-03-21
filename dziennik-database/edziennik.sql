@@ -167,7 +167,7 @@ CREATE TABLE `uczniowie` (
   `haslo` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
   `klasa` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `uczniowie` (
 
 LOCK TABLES `uczniowie` WRITE;
 /*!40000 ALTER TABLE `uczniowie` DISABLE KEYS */;
-INSERT INTO `uczniowie` VALUES (1,'Mikołaj','Florczak','Adres 123','email@example.com','000000000','mikflo00','123','4ig');
+INSERT INTO `uczniowie` VALUES (1,'Jan','Nowak','Adres 123','email@example.com','000000000','jannow00','jan','4ig'),(2,'Adam','Kowalski','Inny 321','emai2@example.com','111111111','adakow00','adam','4ig');
 /*!40000 ALTER TABLE `uczniowie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +219,7 @@ DROP TABLE IF EXISTS `wiadomosci`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wiadomosci` (
-  `id` int unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tytul` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
   `tresc` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
   `kod_autora` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
@@ -227,7 +227,7 @@ CREATE TABLE `wiadomosci` (
   `odczytana` tinyint(1) NOT NULL,
   `data` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +236,7 @@ CREATE TABLE `wiadomosci` (
 
 LOCK TABLES `wiadomosci` WRITE;
 /*!40000 ALTER TABLE `wiadomosci` DISABLE KEYS */;
-INSERT INTO `wiadomosci` VALUES (1,'Wycieczka do Warszawy','Organizowana jest wycieczka do warszawy dnia 01.06.2023 . Proszę o zgłoszenie się do mnie osób chętnych.','radand00','mikflo00',1,'2023-02-15'),(2,'Ankieta','Proszę o wypełnienie ankiety. Pomoże ona w pracy magisterskiej jednego z studentów Politechniki Rzeszowskiej. http:/www.example.com/','helwas00','mikflo00',1,'2023-01-28'),(3,'Wywiadówka','Dnia 25.03.2023 jest organizowana wywiadówka. Proszę o przekazanie informacji rodzicom.','radand00','mikflo00',1,'2023-02-20');
+INSERT INTO `wiadomosci` VALUES (1,'Wycieczka do Warszawy','Organizowana jest wycieczka do warszawy dnia 01.06.2023 . Proszę o zgłoszenie się do mnie osób chętnych.','radand00','jannow00',0,'2023-02-15'),(2,'Ankieta','Proszę o wypełnienie ankiety. Pomoże ona w pracy magisterskiej jednego z studentów Politechniki Rzeszowskiej. http:/www.example.com/','helwas00','jannow00',0,'2023-01-28'),(3,'Wywiadówka','Dnia 25.03.2023 jest organizowana wywiadówka. Proszę o przekazanie informacji rodzicom.','radand00','jannow00',1,'2023-02-20'),(5,'Zadanie','Dzień dobry...','jannow00','frysob00',0,'2023-02-14');
 /*!40000 ALTER TABLE `wiadomosci` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,6 +408,49 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `loginStudent` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `loginStudent`(sCode varchar(8), pass varchar(50))
+BEGIN
+	select * from uczniowie where kod = sCode and haslo = pass;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sendNewMessage` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sendNewMessage`(
+	nTitle varchar(100),
+    nContent varchar(1000),
+    nACode varchar(8),
+    nRCode varchar(8)
+)
+BEGIN
+	insert into wiadomosci VALUES (NULL, nTitle, nContent, nACode, nRCode, 0, curdate());
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -418,4 +461,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-09 20:07:34
+-- Dump completed on 2023-03-17 13:23:59

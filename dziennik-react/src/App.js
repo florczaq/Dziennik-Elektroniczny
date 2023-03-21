@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+
 import Comments from './components/Comments/Comments';
 import Grades from './components/Grades/Grades';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import MainPage from './components/MainPage/MainPage';
-import MessageReader from './components/NewMessage/MessageReader';
 import Messages from './components/Messages/Messages';
+import MessageReader from './components/NewMessage/MessageReader';
 import NewMessage from './components/NewMessage/NewMessage';
 import News from './components/News/News';
 import Sidebar from './components/Sidebar/Sidebar';
